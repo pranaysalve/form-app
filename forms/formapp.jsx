@@ -13,7 +13,7 @@ const INITIAL_DATA = {
   street: "",
   city: "",
   state: "",
-  zip: "",
+  pin: "",
   email: "",
   password: "",
 };
