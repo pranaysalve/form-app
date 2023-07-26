@@ -4,29 +4,13 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import Link from "next/link";
 import { FormContext } from "@/service/formControl.context";
 import { dateFormat } from "@/utils/dateFormat";
+
 const ViewForm = () => {
   const { form, isLoading, error, getForm } = useContext(FormContext);
   console.log(form);
   useEffect(() => {
     getForm();
   }, []);
-
-  const submit = () => {
-    confirmAlert({
-      title: "Confirm to submit",
-      message: "Are you sure to do this.",
-      buttons: [
-        {
-          label: "Yes",
-          onClick: () => alert("Click Yes"),
-        },
-        {
-          label: "No",
-          onClick: () => alert("Click No"),
-        },
-      ],
-    });
-  };
 
   return (
     <>
@@ -66,12 +50,7 @@ const ViewForm = () => {
                           {item.street}, {item.city}, {item.state}
                         </p>
                         <div className="sm:flex hidden justify-between items-center">
-                          <p>
-                            {dateFormat(item.createdAt)}
-                            <div className="container">
-                              <button onClick={submit}>Confirm dialog</button>
-                            </div>
-                          </p>
+                          <p>{dateFormat(item.createdAt)}</p>
                           <BsThreeDotsVertical />
                         </div>
                       </li>

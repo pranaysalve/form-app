@@ -21,6 +21,7 @@ const INITIAL_DATA = {
 export default function App() {
   const { form, getForm, postForm } = useContext(FormContext);
   const [data, setData] = useState(INITIAL_DATA);
+  const [isSubmit, setIsSubmit] = useState(false);
 
   useEffect(() => {
     getForm();
@@ -46,11 +47,8 @@ export default function App() {
       return next();
     }
     await postForm(data);
-    alert(() => (
-      <Link href={"/viewForm"}>
-        <button className="bg-blue-700">View All Details</button>
-      </Link>
-    ));
+    setData(INITIAL_DATA);
+    setIsSubmit(true);
   };
   console.log(form && form);
 
@@ -63,23 +61,36 @@ export default function App() {
               {currentStepIndex + 1} / {steps.length}
             </div>
             {step}
-            <div className="flex flex-1 mt-4 gap-4 justify-end">
-              {!isFirstStep && (
+            {isSubmit === false ? (
+              <div className="flex flex-1 mt-4 gap-4 justify-end">
+                {!isFirstStep && (
+                  <button
+                    className="mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    type="button"
+                    onClick={back}
+                  >
+                    Back
+                  </button>
+                )}
                 <button
-                  className="mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  type="button"
-                  onClick={back}
+                  className="pt-10 text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  type="submit"
                 >
-                  Back
+                  {isLastStep ? "Finish" : "Next"}
                 </button>
-              )}
-              <button
-                className="pt-10 text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                type="submit"
-              >
-                {isLastStep ? "Finish" : "Next"}
-              </button>
-            </div>
+              </div>
+            ) : (
+              <>
+                <Link href={"/viewForm"}>
+                  <button
+                    className="pt-10 text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    type="button"
+                  >
+                    View Forms
+                  </button>
+                </Link>
+              </>
+            )}
           </form>
         </div>
       </div>
