@@ -1,4 +1,4 @@
-const BaseUri = "http://localhost:8585";
+const BaseUri = "https://demo-api-form-data.onrender.com";
 export const GetForm = async () => {
   return await fetch(`${BaseUri}/`)
     .then((res) => res.json())
