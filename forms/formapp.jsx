@@ -4,6 +4,7 @@ import { AddressForm } from "./address.form";
 import { useMultistepForm } from "../handler/formStateHandler";
 import { UserForm } from "./user.form";
 import { FormContext } from "@/service/formControl.context";
+import Link from "next/link";
 
 const INITIAL_DATA = {
   firstName: "",
@@ -45,7 +46,11 @@ export default function App() {
       return next();
     }
     await postForm(data);
-    alert(<h1>this is alert</h1>);
+    alert(() => (
+      <Link href={"/viewForm"}>
+        <button className="bg-blue-700">View All Details</button>
+      </Link>
+    ));
   };
   console.log(form && form);
 
