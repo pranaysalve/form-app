@@ -43,38 +43,38 @@ const ViewForm = () => {
               {form &&
                 form.map((item) => {
                   return (
-                    <Link key={item._id} href={`viewForm/${item._id}}`}>
-                      <li className="bg-gray-50 hover:bg-gray-100 rounded-lg my-3 p-2 grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 items-center justify-between cursor-pointer">
-                        <div className="flex">
-                          <div className="bg-green-100 p-3 rounded-lg">
-                            <FaUser className="text-green-700" />
-                          </div>
-                          <div className="pl-4">
-                            <p className="text-gray-800 font-bold">
-                              {item.firstName}
-                            </p>
-                            <p className="text-gray-800 text-sm">
-                              {item.lastName}
-                            </p>
-                          </div>
+                    // <Link key={item._id} href={`viewForm/${item._id}}`}>
+                    <li className="bg-gray-50 hover:bg-gray-100 rounded-lg my-3 p-2 grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 items-center justify-between cursor-pointer">
+                      <div className="flex">
+                        <div className="bg-green-100 p-3 rounded-lg">
+                          <FaUser className="text-green-700" />
                         </div>
-                        <p className="text-gray-600 sm:text-left text-right">
-                          {item.email}
-                        </p>
-                        <p className="hidden md:flex">
-                          {item.street}, {item.city}, {item.state}
-                        </p>
-                        <div className="sm:flex hidden justify-between items-center">
-                          <p>
-                            {dateFormat(item.createdAt)}
-                            <div className="container">
-                              <button onClick={submit}>Confirm dialog</button>
-                            </div>
+                        <div className="pl-4">
+                          <p className="text-gray-800 font-bold">
+                            {item.firstName}
                           </p>
-                          <BsThreeDotsVertical />
+                          <p className="text-gray-800 text-sm">
+                            {item.lastName}
+                          </p>
                         </div>
-                      </li>
-                    </Link>
+                      </div>
+                      <p className="text-gray-600 sm:text-left text-right">
+                        {item.email}
+                      </p>
+                      <p className="hidden md:flex">
+                        {item.street}, {item.city}, {item.state}
+                      </p>
+                      <div className="sm:flex hidden justify-between items-center">
+                        <p>
+                          {dateFormat(item.createdAt)}
+                          <div className="container">
+                            <button onClick={submit}>Confirm dialog</button>
+                          </div>
+                        </p>
+                        <BsThreeDotsVertical />
+                      </div>
+                    </li>
+                    //  </Link>
                   );
                 })}
             </ul>
