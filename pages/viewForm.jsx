@@ -6,7 +6,7 @@ import { FormContext } from "@/service/formControl.context";
 
 const ViewForm = () => {
   const { form, isLoading, error, getForm } = useContext(FormContext);
-  console.log({ form });
+  console.log(form);
   useEffect(() => {
     getForm();
   }, []);
@@ -19,32 +19,41 @@ const ViewForm = () => {
               <span>Name</span>
               <span className="sm:text-left text-right">Email</span>
               <span className="hidden md:grid">Address</span>
-              <span className="hidden sm:grid">User ID</span>
+              <span className="hidden sm:grid">Created At</span>
             </div>
             <ul>
-              {form && (
-                <Link key={form._id} href={`viewForm/${form._id}}`}>
-                  <li className="bg-gray-50 hover:bg-gray-100 rounded-lg my-3 p-2 grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 items-center justify-between cursor-pointer">
-                    <div className="flex">
-                      <div className="bg-green-100 p-3 rounded-lg">
-                        <FaUser className="text-green-700" />
-                      </div>
-                      <div className="pl-4">
-                        <p className="text-gray-800 font-bold">
-                          {form.firstName}
+              {form &&
+                form.map((item) => {
+                  return (
+                    <Link key={item._id} href={`viewForm/${form._id}}`}>
+                      <li className="bg-gray-50 hover:bg-gray-100 rounded-lg my-3 p-2 grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 items-center justify-between cursor-pointer">
+                        <div className="flex">
+                          <div className="bg-green-100 p-3 rounded-lg">
+                            <FaUser className="text-green-700" />
+                          </div>
+                          <div className="pl-4">
+                            <p className="text-gray-800 font-bold">
+                              {item.firstName}
+                            </p>
+                            <p className="text-gray-800 text-sm">
+                              {item.lastName}
+                            </p>
+                          </div>
+                        </div>
+                        <p className="text-gray-600 sm:text-left text-right">
+                          is
                         </p>
-                        <p className="text-gray-800 text-sm">{form.lastName}</p>
-                      </div>
-                    </div>
-                    <p className="text-gray-600 sm:text-left text-right">is</p>
-                    <p className="hidden md:flex">what</p>
-                    <div className="sm:flex hidden justify-between items-center">
-                      <p>missing</p>
-                      <BsThreeDotsVertical />
-                    </div>
-                  </li>
-                </Link>
-              )}
+                        <p className="hidden md:flex">
+                          {item.street}, {item.city}, {item.state}
+                        </p>
+                        <div className="sm:flex hidden justify-between items-center">
+                          <p>{item.createdAt}</p>
+                          <BsThreeDotsVertical />
+                        </div>
+                      </li>
+                    </Link>
+                  );
+                })}
             </ul>
           </div>
         </div>
