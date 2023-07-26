@@ -41,7 +41,7 @@ const ViewForm = () => {
                           </div>
                         </div>
                         <p className="text-gray-600 sm:text-left text-right">
-                          is
+                          {item.email}
                         </p>
                         <p className="hidden md:flex">
                           {item.street}, {item.city}, {item.state}
