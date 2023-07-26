@@ -12,8 +12,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* <main className="flex justify-center flex-row bg-gray-100 min-h-screen"> */}
-      <main className="bg-gray-100">
-        <div className=" w-full h-full">
+      <main className="bg-gray-100 h-screen flex items-center justify-center">
+        <div className="w-96 h-full">
           <App />
         </div>
       </main>

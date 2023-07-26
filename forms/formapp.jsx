@@ -49,35 +49,33 @@ export default function App() {
   console.log(form && form);
 
   return (
-    <div className=" min-h-screen">
-      <div className="relative bg-white border p-8 m-4 border-spacing-4 max-w-lg">
-        {/* <div className="bg-gray-100 w-full h-full"> */}
-        {/* <div className="p-4 border-collapse"> */}
-        <form onSubmit={onSubmit}>
-          <div className="absolute top-4 left-4">
-            {currentStepIndex + 1} / {steps.length}
-          </div>
-          {step}
-          <div className="flex flex-1 mt-4 gap-4 justify-end">
-            {!isFirstStep && (
+    <div className="h-screen flex items-center">
+      <div className="bg-gray-100 w-full">
+        <div className="p-4 border-collapse">
+          <form onSubmit={onSubmit}>
+            <div className="absolute top-4 left-4">
+              {currentStepIndex + 1} / {steps.length}
+            </div>
+            {step}
+            <div className="flex flex-1 mt-4 gap-4 justify-end">
+              {!isFirstStep && (
+                <button
+                  className="mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  type="button"
+                  onClick={back}
+                >
+                  Back
+                </button>
+              )}
               <button
-                className="mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                type="button"
-                onClick={back}
+                className="pt-10 text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                type="submit"
               >
-                Back
+                {isLastStep ? "Finish" : "Next"}
               </button>
-            )}
-            <button
-              className="pt-10 text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              type="submit"
-            >
-              {isLastStep ? "Finish" : "Next"}
-            </button>
-          </div>
-        </form>
-        {/* </div> */}
-        {/* </div> */}
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
