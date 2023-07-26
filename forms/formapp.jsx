@@ -45,6 +45,7 @@ export default function App() {
       return next();
     }
     await postForm(data);
+    alert(<h1>this is alert</h1>);
   };
   console.log(form && form);
 
