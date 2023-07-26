@@ -10,6 +10,24 @@ const ViewForm = () => {
   useEffect(() => {
     getForm();
   }, []);
+
+  const submit = () => {
+    confirmAlert({
+      title: "Confirm to submit",
+      message: "Are you sure to do this.",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => alert("Click Yes"),
+        },
+        {
+          label: "No",
+          onClick: () => alert("Click No"),
+        },
+      ],
+    });
+  };
+
   return (
     <>
       <div className="bg-gray-100 min-h-screen">
@@ -47,7 +65,12 @@ const ViewForm = () => {
                           {item.street}, {item.city}, {item.state}
                         </p>
                         <div className="sm:flex hidden justify-between items-center">
-                          <p>{dateFormat(item.createdAt)}</p>
+                          <p>
+                            {dateFormat(item.createdAt)}
+                            <div className="container">
+                              <button onClick={submit}>Confirm dialog</button>
+                            </div>
+                          </p>
                           <BsThreeDotsVertical />
                         </div>
                       </li>
