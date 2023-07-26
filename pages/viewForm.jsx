@@ -36,10 +36,10 @@ const ViewForm = () => {
                           </div>
                           <div className="pl-4">
                             <p className="text-gray-800 font-bold">
-                              {item.firstName}
+                              {item.firstName} {item.lastName}
                             </p>
                             <p className="text-gray-800 text-sm">
-                              {item.lastName}
+                              {item.birthdate}
                             </p>
                           </div>
                         </div>
