@@ -1,6 +1,6 @@
 import { FormWrapper } from "./fromwrapper";
 
-export function AddressForm({ street, city, state, zip, updateFields }) {
+export function AddressForm({ street, city, state, pin, updateFields }) {
   return (
     <FormWrapper title="Address">
       <label>Street</label>
@@ -31,14 +31,14 @@ export function AddressForm({ street, city, state, zip, updateFields }) {
         value={state}
         onChange={(e) => updateFields({ state: e.target.value })}
       />
-      <label>Zip</label>
+      <label>Pin</label>
       <input
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="Zip"
+        placeholder="Pin"
         required
         type="text"
-        value={zip}
-        onChange={(e) => updateFields({ zip: e.target.value })}
+        value={pin}
+        onChange={(e) => updateFields({ pin: e.target.value })}
       />
     </FormWrapper>
   );

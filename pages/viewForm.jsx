@@ -39,7 +39,7 @@ const ViewForm = () => {
                               {item.firstName} {item.lastName}
                             </p>
                             <p className="text-gray-800 text-sm">
-                              {item.birthdate}
+                              {dateFormat(item.birthdate)}
                             </p>
                           </div>
                         </div>
